@@ -1,0 +1,38 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class OpenDoor : MonoBehaviour
+{
+    public Text text;
+    public string levelName;
+    public string levelText;
+    private bool inDoor = false;
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            text.text = "Presiona X para ingresar a " + levelText;
+            text.gameObject.SetActive(true);
+            inDoor = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            text.gameObject.SetActive(false);
+            inDoor = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (inDoor && Input.GetKeyDown("x"))
+        {
+            SceneManager.LoadScene(levelName);
+        }
+    }
+}
