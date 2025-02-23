@@ -1,25 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChangeSkin : MonoBehaviour
 {
-    public GameObject skinPannel;
+    public GameObject skinPanel;
     private bool inDoor = false;
     public GameObject player;
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            skinPannel.gameObject.SetActive(true);
+            skinPanel.gameObject.SetActive(true);
             inDoor = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-            skinPannel.gameObject.SetActive(false);
+            skinPanel.gameObject.SetActive(false);
             inDoor = false;
         }
     }
@@ -36,21 +38,24 @@ public class ChangeSkin : MonoBehaviour
         ResetPlayerSkin();
     }
 
-    public void SetPlayerPink()
-    {
-        PlayerPrefs.SetString("PlayerSelected", "Pink");
-        ResetPlayerSkin();
-    }
-
     public void SetPlayerVirtual()
     {
         PlayerPrefs.SetString("PlayerSelected", "Virtual");
         ResetPlayerSkin();
     }
 
+    public void SetPlayerPink()
+    {
+        PlayerPrefs.SetString("PlayerSelected", "Pink");
+        ResetPlayerSkin();
+    }
+
+
+
     void ResetPlayerSkin()
     {
-        skinPannel.gameObject.SetActive(false);
+        skinPanel.gameObject.SetActive(false);
         player.GetComponent<PlayerSelect>().ChangePlayerInMenu();
     }
+
 }

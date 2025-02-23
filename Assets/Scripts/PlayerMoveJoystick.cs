@@ -49,7 +49,7 @@ public class PlayerMoveJoystick : MonoBehaviour
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
         }
 
-        if (CheckGround.isGrounded == false)
+        if (CheckGround.IsGrounded == false)
         {
             animator.SetBool("Run", false);
             animator.SetBool("Jump", true);
@@ -104,7 +104,7 @@ public class PlayerMoveJoystick : MonoBehaviour
     {
         //if (Input.GetKey("space"))
         //{
-            if (CheckGround.isGrounded)
+            if (CheckGround.IsGrounded)
             {
                 //PUEDE DAR UN SALTO DOBLE
                 canDoubleJump = true;
@@ -113,8 +113,8 @@ public class PlayerMoveJoystick : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown("space"))
-                {
+                //if (Input.GetKeyDown("space"))
+                //{
                     if (canDoubleJump)
                     {
                         //ANIMACION SALTO DOBLE
@@ -123,7 +123,7 @@ public class PlayerMoveJoystick : MonoBehaviour
                         rb2d.velocity = new Vector2(rb2d.velocity.x, doubleJumpSpeed);
                         //NO PUEDE DAR DOBLE SALTO
                         canDoubleJump = false;
-                    }
+                    //}
                 }
             }
         //}
