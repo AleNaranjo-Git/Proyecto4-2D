@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class IABasics : MonoBehaviour
@@ -20,6 +21,9 @@ public class IABasics : MonoBehaviour
     
     void Update()
     {
+        // Check if the enemy is moving to flip the sprite
+        StartCoroutine(CheckEnemyMoving());
+
         // Move the enemy to the next position in the array
         transform.position = Vector2.MoveTowards(transform.position, moveSpots[i].transform.position, speed * Time.deltaTime);
 
@@ -44,11 +48,22 @@ public class IABasics : MonoBehaviour
                 //counts the time to wait
                 waitTime -= Time.deltaTime;
             }
+        }
+    }
 
-            if (i == moveSpots.Length)
-            {
-                i = 0;
-            }
+    IEnumerator CheckEnemyMoving()
+    {
+        actualPos = transform.position;
+
+        yield return new WaitForSeconds(1);
+
+        if(transform.position.x > actualPos.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if(transform.position.x < actualPos.x)
+        {
+            spriteRenderer.flipX = false;
         }
     }
 }
