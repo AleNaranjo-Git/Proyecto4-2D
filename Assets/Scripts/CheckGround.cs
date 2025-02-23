@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class CheckGround : MonoBehaviour
 {
-    public static bool isGrounded;
+    public static bool IsGrounded;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Ground")
         {
-            isGrounded = true;
+            IsGrounded = true;
         }
     }
 
@@ -16,7 +16,7 @@ public class CheckGround : MonoBehaviour
     {
         if (collision.CompareTag("Ground"))
         {
-            isGrounded = false;
+            IsGrounded = false;
         }
     }
 }

@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6311634671366220394}
   - component: {fileID: 6499416690054001510}
   - component: {fileID: 3135238716873158217}
+  - component: {fileID: 3560866491733536845}
+  - component: {fileID: 3629898327222084668}
   m_Layer: 0
   m_Name: NinjaPlayer
   m_TagString: Player
@@ -201,14 +203,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee39126e4222174fb243d33bf150241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 5
-  jumpForce: 5
-  doubleJumpForce: 3
+  runSpeed: 7
+  jumpSpeed: 7
+  doubleJumpSpeed: 7
   betterJump: 0
   fallMultiplier: 0.5
   lowJumpMultiplier: 1
   spriteRenderer: {fileID: 7862971547579652155}
-  animator: {fileID: 0}
 --- !u!114 &6499416690054001510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,7 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3202bfd4ded37a34997054c7498e9928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSelected: 0
+  enableSelectCharacter: 0
+  playerSelected: 1
   animator: {fileID: 4516681396011129368}
   spriteRenderer: {fileID: 7862971547579652155}
   playerController:
@@ -242,11 +244,45 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 9d25a9347caa07440beb63756882e701, type: 2}
   - {fileID: 9100000, guid: c2c2173cd77ed2a4c80ae7f615fb839c, type: 2}
   - {fileID: 9100000, guid: 2a0896d765625894c9188f1735e59897, type: 2}
-  playerRender:
+  playerRenderer:
   - {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
   - {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
   - {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}
   - {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca, type: 3}
+--- !u!114 &3560866491733536845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126439362204370291}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca4cb639ee252b4693b5d4b18f13ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joystick: {fileID: 0}
+  runSpeedHorizontal: 2
+  runSpeed: 1.25
+  jumpSpeed: 3
+  doubleJumpSpeed: 3
+  betterJump: 0
+  fallMultiplier: 0.5
+  lowJumpMultiplier: 1
+  spriteRenderer: {fileID: 7862971547579652155}
+--- !u!114 &3629898327222084668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126439362204370291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada48be78c1ffd742a5c44226b1f1226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 126439362204370291}
 --- !u!1 &8162816453956794536
 GameObject:
   m_ObjectHideFlags: 0

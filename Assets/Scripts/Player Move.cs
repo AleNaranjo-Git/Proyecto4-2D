@@ -1,54 +1,58 @@
-using System;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-
-    public float runSpeed = 5;
-    public float jumpForce = 5;
-    public float doubleJumpForce = 3;
+    public float runSpeed = 2;
+    public float jumpSpeed = 3;
+    public float doubleJumpSpeed = 3;
     private bool canDoubleJump;
 
-    Rigidbody2D rb2D;
+    Rigidbody2D rb2d;
 
-    public Boolean betterJump = false;
+    public bool betterJump = false;
     public float fallMultiplier = 0.5f;
-    public float lowJumpMultiplier = 1f;
+    public float lowJumpMultiplier = 1;
 
     public SpriteRenderer spriteRenderer;
-    public Animator animator;
+    Animator animator;
 
     void Start()
     {
-        rb2D = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();    
+        rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    [Obsolete]
+    [System.Obsolete]
     private void Update()
     {
+
         if (Input.GetKey("space"))
         {
-            if (CheckGround.isGrounded)
+            if (CheckGround.IsGrounded)
             {
+                //PUEDE DAR UN SALTO DOBLE
                 canDoubleJump = true;
-                rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+                //REALIZA EL SALTO NORMAL
+                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
             }
-            else
+            else 
             {
-                if(Input.GetKeyDown("space"))
+                if (Input.GetKeyDown("space"))
                 {
-                    if(canDoubleJump)
+                    if (canDoubleJump)
                     {
+                        //ANIMACION SALTO DOBLE
                         animator.SetBool("DoubleJump", true);
-                        rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpForce);
+                        //REALIZA EL DOBLE SALTO
+                        rb2d.velocity = new Vector2(rb2d.velocity.x, doubleJumpSpeed);
+                        //NO PUEDE DAR DOBLE SALTO
                         canDoubleJump = false;
                     }
                 }
             }
         }
 
-        if(CheckGround.isGrounded == false)
+        if (CheckGround.IsGrounded == false)
         {
             animator.SetBool("Run", false);
             animator.SetBool("Jump", true);
@@ -58,7 +62,7 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("Jump", false);
             animator.SetBool("DoubleJump", false);
             animator.SetBool("Falling", false);
-            if(rb2D.velocity.x != 0)
+            if (Mathf.Round(rb2d.velocity.x) != 0)
             {
                 animator.SetBool("Run", true);
             }
@@ -68,7 +72,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if(rb2D.velocity.y < 0)
+        if (rb2d.velocity.y < 0)
         {
             animator.SetBool("Falling", true);
         }
@@ -76,58 +80,60 @@ public class PlayerMove : MonoBehaviour
         {
             animator.SetBool("Falling", false);
         }
+
     }
 
-    [Obsolete]
+    [System.Obsolete]
     private void FixedUpdate()
     {
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
-            rb2D.velocity = new Vector2(runSpeed, rb2D.velocity.y);
+            rb2d.velocity = new Vector2(runSpeed, rb2d.velocity.y);
             spriteRenderer.flipX = false;
         }
         else if (Input.GetKey("a") || Input.GetKey("left"))
         {
-            rb2D.velocity = new Vector2(-runSpeed, rb2D.velocity.y);
+            rb2d.velocity = new Vector2(-runSpeed, rb2d.velocity.y);
             spriteRenderer.flipX = true;
         }
-        else
+        else 
         {
-            rb2D.velocity = new Vector2(0, rb2D.velocity.y);
+            rb2d.velocity = new Vector2(0, rb2d.velocity.y);
         }
 
-        /*if (Input.GetKey("space") && CheckGround.isGrounded)
-        {
-            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
-        }
+        //if (Input.GetKey("space") && CheckGround.IsGrounded == true)
+        //{
+        //    rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
+        //}
 
-        if(CheckGround.isGrounded == false)
-        {
-            animator.SetBool("Run", false);
-            animator.SetBool("Jump", true);
-        }
-        else
-        {
-            animator.SetBool("Jump", false);
-            if(rb2D.velocity.x != 0)
-            {
-                animator.SetBool("Run", true);
-            }
-            else
-            {
-                animator.SetBool("Run", false);
-            }
-        }*/
+        //if (CheckGround.IsGrounded == false)
+        //{
+        //    animator.SetBool("Run", false);
+        //    animator.SetBool("Jump", true);
+        //}
+        //else 
+        //{
+        //    animator.SetBool("Jump", false);
+        //    if (rb2d.velocity.x != 0)
+        //    {
+        //        animator.SetBool("Run", true);
+        //    }
+        //    else
+        //    {
+        //        animator.SetBool("Run", false);
+        //    }
+        //}
 
         if (betterJump)
         {
-            if (rb2D.velocity.y < 0)
+            if (rb2d.velocity.y < 0)
             {
-                rb2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                rb2d.velocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.deltaTime;
             }
-            else if (rb2D.velocity.y > 0 && !Input.GetKey("space"))
+
+            if (rb2d.velocity.y > 0 && !Input.GetKey("space"))
             {
-                rb2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+                rb2d.velocity += Vector2.up * Physics2D.gravity.y * lowJumpMultiplier * Time.deltaTime;
             }
         }
     }

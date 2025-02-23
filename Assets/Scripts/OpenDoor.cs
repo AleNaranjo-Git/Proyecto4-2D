@@ -30,7 +30,7 @@ public class OpenDoor : MonoBehaviour
 
     private void Update()
     {
-        if (inDoor && Input.GetKeyDown("x"))
+        if (inDoor && Input.GetKey("x"))
         {
             SceneManager.LoadScene(levelName);
         }
