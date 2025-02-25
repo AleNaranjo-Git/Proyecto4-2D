@@ -244,11 +244,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 9d25a9347caa07440beb63756882e701, type: 2}
   - {fileID: 9100000, guid: c2c2173cd77ed2a4c80ae7f615fb839c, type: 2}
   - {fileID: 9100000, guid: 2a0896d765625894c9188f1735e59897, type: 2}
-  playerRenderer:
-  - {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
-  - {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
-  - {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}
-  - {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca, type: 3}
+  playerRenderer: []
 --- !u!114 &3560866491733536845
 MonoBehaviour:
   m_ObjectHideFlags: 0

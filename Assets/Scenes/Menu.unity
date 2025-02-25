@@ -1131,18 +1131,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3135238716873158217, guid: 3d713d11f4b97db4aae0b06b380f9e17, type: 3}
-      propertyPath: playerRenderer.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3629898327222084668, guid: 3d713d11f4b97db4aae0b06b380f9e17, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1829595754}
-    - target: {fileID: 6311634671366220394, guid: 3d713d11f4b97db4aae0b06b380f9e17, type: 3}
-      propertyPath: doubleJumpForce
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
